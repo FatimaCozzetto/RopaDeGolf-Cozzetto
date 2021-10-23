@@ -29,6 +29,7 @@ const productos = [];
 
 //RETORNA LISTA DE PRODUCTO
 const getAll = () => {
+    productos = JSON.parse(localStorage.getItem('productos'));
     return productos;
 }
 
@@ -55,18 +56,10 @@ const remove = (nombre) => {
 }
 
 //MODIFICAR UN PRODUCTO
-const update = (nombre, color) => {
+const update = (nombre, color, talle, precio) => {
     const producto = findOne(nombre);
     producto.color = color;
-}
-
-const update = (nombre, talle) => {
-    const producto = findOne(nombre);
     producto.talle = talle;
-}
-
-const update = (nombre, precio) => {
-    const producto = findOne(nombre);
     producto.precio = precio;
 }
 
@@ -101,3 +94,30 @@ creat(producto3);
 
 //OBTENER LISTA COMPLETA DE PRODUCTOS
 console.log(getAll());
+
+//OBTENER ELEMENTOS DEL DOM
+const listaProductos = document.getElementById('listaPorductos');
+console.log(listaProductos);
+const_formProducto = document.getElementById ('formProducto');
+const inputNombreProducto= document.getElementById ('inputNombreProducto');
+const inputColorProducto = document.getElementById ('inputColorProducto');
+const inputTalleProducto = document.getElementById ('inputTalleProducto');
+
+//AGREGAR PRODUCTOS A LA LISTA PARA EL BROWSER
+for(let producto of productos) {
+    console.log(producto);
+    let itemProducto = document.createElement('li');
+    itemProducto.textContent = `El nombre del producto es $(producto.nombre)`;
+    listaProductos.appendChild(itemProducto);
+}
+
+//ESCUCHAR EL EVENTO SUBMIT DEL FORMULARIO
+formProducto.addEventListener('submit', (event) => {
+    const nombre = inputNombreProducto.value;
+    const color = inputColorProducto.value;
+    const talle = inputTalleProducto.value;
+
+    const producto = new Producto (nombre, color, talle);
+
+    create(producto);
+})
