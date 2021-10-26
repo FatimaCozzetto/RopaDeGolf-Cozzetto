@@ -52,7 +52,7 @@ const findOne = (nombre) => {
 const remove = (nombre) => {
     const producto = findOne(nombre);
     const index = productos.indexOf(producto);
-    productos.splice (index, 1)
+    productos.splice (index, 1);
 }
 
 //MODIFICAR UN PRODUCTO
@@ -120,4 +120,11 @@ formProducto.addEventListener('submit', (event) => {
     const producto = new Producto (nombre, color, talle);
 
     create(producto);
+
+    // TODO: DESACOPLAR
+    itemProducto.onclick = () => {
+        remove(producto.id);
+        document.location.reload();
+    }
 })
+
