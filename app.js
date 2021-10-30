@@ -98,7 +98,6 @@ console.log(getAll());
 //OBTENER ELEMENTOS DEL DOM
 const listaProductos = document.getElementById('listaPorductos');
 console.log(listaProductos);
-const_formProducto = document.getElementById ('formProducto');
 const inputNombreProducto= document.getElementById ('inputNombreProducto');
 const inputColorProducto = document.getElementById ('inputColorProducto');
 const inputTalleProducto = document.getElementById ('inputTalleProducto');
@@ -120,11 +119,11 @@ formProducto.addEventListener('submit', (event) => {
     const producto = new Producto (nombre, color, talle);
 
     create(producto);
-
-    // TODO: DESACOPLAR
-    itemProducto.onclick = () => {
-        remove(producto.id);
-        document.location.reload();
-    }
 })
+
+// TODO: DESACOPLAR
+itemProducto.onclick = () => {
+    remove(producto.id);
+    document.location.reload();
+}
 
