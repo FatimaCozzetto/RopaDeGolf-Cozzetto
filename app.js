@@ -34,7 +34,7 @@ const getAll = () => {
 }
 
 //AGREGAR UN PRODUCTO A LA LISTA
-const creat = (productos) => {
+const creat = (producto) => {
     productos.push(producto);
 }
 
@@ -64,7 +64,7 @@ const update = (nombre, color, talle, precio) => {
 }
 
 //REMERA
-const producto1 = new producto('Remera', 'Blanca', 'L' ,1500);
+const producto1 = new Producto('Remera', 'Blanca', 'L' ,1500);
 
 console.log(producto1.getColor);
 console.log(producto1.getTalle);
@@ -118,12 +118,12 @@ formProducto.addEventListener('submit', (event) => {
 
     const producto = new Producto (nombre, color, talle);
 
-    create(producto);
+    creat(producto);
 })
 
 // TODO: DESACOPLAR
 itemProducto.onclick = () => {
-    remove(producto.id);
+    remove(Producto.id);
     document.location.reload();
 }
 
