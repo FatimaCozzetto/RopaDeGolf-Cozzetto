@@ -50,6 +50,11 @@
     </header>
     <main>
     <!--AQUÍ INICIA MI PÁGINA-->
+
+    <div id="contenedor-lista-productos"></div>
+
+    <div id="contenedor-carrito"></div>
+
     <section id="inicio">
         <!--TÍTULO-->
         <h1 class="tituloIndex">
@@ -90,26 +95,6 @@
             </a>
         </div>
     </section>
-
-    <!--DESAFÍO DOM-->
-    <form id="formProducto">
-        <p class="formp">Nombre del producto</p>
-        <input id="inputNombreProducto" autocomplete="off" type="text">
-        
-        <p class="formp">Color</p>
-        <input id="inputColorProducto" autocomplete="off" type="text">
-
-        <p class="formp">Talle</p>
-        <input id="inputTalleProducto" autocomplete="off" type="text">
-
-        <div>
-            <button>Agregar producto</button>
-        </div>
-    </form>
-
-    <div id="contenedor-lista-productos">
-
-    </div>
 
     <!--IMÁGENES DE PRODUCTOS-->
 
@@ -360,9 +345,9 @@
 
     <!--JAVA SCRIPT-->
     <script src="app.js"></script>
-    <script src="lista.js"></script>
+    <script type="module" src="lista.js"></script>
     <!--JQUERY-->
-    <script src="js/libreria.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--CDN DE BOOTSTRAP DEL JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

@@ -8,3 +8,7 @@ const productos = [
     { id: 7, nombre: 'Chomba Stuburt Evolve Milby', precio: 6.100},
     { id: 8, nombre: 'Remera PGA Tour', precio: 5.100},
 ]
+
+export{
+    productos
+}

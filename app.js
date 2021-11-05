@@ -95,13 +95,6 @@ creat(producto3);
 //OBTENER LISTA COMPLETA DE PRODUCTOS
 console.log(getAll());
 
-//OBTENER ELEMENTOS DEL DOM
-const listaProductos = document.getElementById('listaPorductos');
-console.log(listaProductos);
-const inputNombreProducto= document.getElementById ('inputNombreProducto');
-const inputColorProducto = document.getElementById ('inputColorProducto');
-const inputTalleProducto = document.getElementById ('inputTalleProducto');
-
 //AGREGAR PRODUCTOS A LA LISTA PARA EL BROWSER
 for(let producto of productos) {
     console.log(producto);
@@ -109,17 +102,6 @@ for(let producto of productos) {
     itemProducto.textContent = `El nombre del producto es $(producto.nombre)`;
     listaProductos.appendChild(itemProducto);
 }
-
-//ESCUCHAR EL EVENTO SUBMIT DEL FORMULARIO
-formProducto.addEventListener('submit', (event) => {
-    const nombre = inputNombreProducto.value;
-    const color = inputColorProducto.value;
-    const talle = inputTalleProducto.value;
-
-    const producto = new Producto (nombre, color, talle);
-
-    creat(producto);
-})
 
 // TODO: DESACOPLAR
 itemProducto.onclick = () => {

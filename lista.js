@@ -1,14 +1,18 @@
-import { productos } from ".productos.js"
+import { productos } from ".productos.js";
 
-//AGREGO IMPUT Y BOTÓN
-$('body').prepend('<button id="btn">Enviar</button>')
-$('body').prepend('<input is="input" type="texto" />)
+class itemCarrito {
+    constructor(cantidad, item){
+        this.cantidad = cantidad
+        this.item = item
+    }
+}
 
-$('#input').change((event)=>{
-    console.log(event.target.value)
-})
+const carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
 for (const producto of productos) {
+
+    let count = 1;
+
     $('#contenedor-lista-productos').append(
         `
             <div class="contenedor-producto>
@@ -28,17 +32,48 @@ for (const producto of productos) {
                 <option value="8">8</option>
             </select>
 
-            <button id="btn-ass-${producto.id}"> Agregar </button>;
+            <button id="btn-add-${producto.id}"> Agregar </button>;
         `
-    );
+    )
 
     //ACCEDO AL SELECT DE CANTIDAD PARA CADA PRODUCTO
     $(`#select-count-${producto.id}`).change((event)=>{
-        console.log(event.target.value)
-        $(`#btn-add-${producto.id}`).trigger('click')
+        count = +event.target.value;
     })
 
+
     $(`#btn-add-${producto.id}`).on('click', ()=>{
-        console.log(producto);
+
+        const itemCarrito = new itemCarrito(count, producto)
+        addItemCarrito(itemCarrito)
+        
     })
 }
+
+const addItemCarrito = (item) => {
+    const itemCarrito = carrito.find(elemento => elemento.item === item['item'])
+    if(itemCarrito){
+        itemCarrito['cantidad'] = item.cantidad
+        carrito.push(item)
+        console.loge(itemCarrito)
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    renderCarrito()
+}
+
+const renderCarrito = () => {
+
+    $('#contenedor-carrito').empty()
+
+    for (let elemento of carrito) {
+        $('#contenedor-carrito').append(
+
+            `
+            <div> ${elemento.item.nombre} - Cantidad: ${elemento.cantidad} </div>
+            `
+
+        )
+    }
+}
+
+renderCarrito()

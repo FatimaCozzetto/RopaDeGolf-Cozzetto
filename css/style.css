@@ -44,4 +44,15 @@ body {
   padding-bottom: 40px;
 }
 
+.contenedor-producto {
+  color: #FFFFFF;
+  font-size: 2em;
+  margin: 10px;
+}
+
+#inicio {
+  margin-bottom: 40px;
+  padding-bottom: 50px;
+}
+
 /*# sourceMappingURL=style.css.map */
